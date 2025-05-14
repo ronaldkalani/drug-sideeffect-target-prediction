@@ -1,17 +1,17 @@
 
-# 🧠 Drug Data Integration and Predictive Modeling for Side Effect and Target Protein Classification in Pharmaceutical Informatics
+# Drug Data Integration and Predictive Modeling for Side Effect and Target Protein Classification in Pharmaceutical Informatics
 
-## 🎯 Goal  
+## Goal  
 To build a machine learning pipeline that merges and enriches drug-related data—including drug names, ATC classification, side effects, and protein targets—and applies supervised learning and NLP to predict adverse effects and biological targets.
 
-## 👥 Intended Audience  
+##  Intended Audience  
 - Pharmaceutical data scientists  
 - Drug safety researchers  
 - Bioinformatics engineers  
 - ML/AI developers in healthcare  
 - Students in computational biology and health data science
 
-## ⚙️ Strategy & Pipeline Steps  
+##  Strategy & Pipeline Steps  
 1. Load and clean drug data from TSV files  
 2. Merge drug identifiers with ATC classifications  
 3. Simulate or extract side effects  
@@ -22,7 +22,7 @@ To build a machine learning pipeline that merges and enriches drug-related data�
 6. Enhance with NLP QA using Hugging Face Transformers  
 7. Export the final dataset for reuse  
 
-## 🧪 Step 1: Load and Merge Drug Data
+##  Step 1: Load and Merge Drug Data
 ```python
 import pandas as pd
 
@@ -35,7 +35,7 @@ drug_atc.columns = ['drug_id', 'atc_code']
 merged_df = pd.merge(drug_names, drug_atc, on='drug_id', how='inner')
 ```
 
-## 🧪 Step 2: Simulate Side Effects
+## Step 2: Simulate Side Effects
 ```python
 import numpy as np
 
@@ -44,7 +44,7 @@ side_effects = ['Nausea', 'Headache', 'None']
 merged_df['side_effect'] = np.random.choice(side_effects, size=len(merged_df))
 ```
 
-## 🤖 Step 3: Side Effect Classification
+## Step 3: Side Effect Classification
 ```python
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
@@ -60,7 +60,7 @@ clf.fit(X_train, y_train)
 print("Side Effect Classification Accuracy:", clf.score(X_test, y_test))
 ```
 
-## 🧬 Step 4: Target Protein Prediction (Simulated)
+##  Step 4: Target Protein Prediction (Simulated)
 ```python
 targets = ['COX1', 'COX2', '5HT3', 'H1', 'Beta-Blocker']
 merged_df['target_protein'] = np.random.choice(targets, size=len(merged_df))
@@ -72,7 +72,7 @@ clf.fit(X, y)
 print("Target Prediction Accuracy:", clf.score(X, y))
 ```
 
-## 💬 Step 5: NLP QA on Excipient Functions
+##  Step 5: NLP QA on Excipient Functions
 ```python
 from transformers import pipeline
 
@@ -94,7 +94,7 @@ for q in questions:
     print("A:", qa(question=q, context=context)['answer'])
 ```
 
-## 📊 Step 6: Visualizations
+## Step 6: Visualizations
 
 ### Side Effect Distribution by ATC Class
 ```python
@@ -140,20 +140,20 @@ plt.title("Drug → Target → Side Effect Network")
 plt.show()
 ```
 
-## 📈 Model Summary
+##  Model Summary
 
 | Task                     | Model           | Accuracy | Notes                                      |
 |--------------------------|------------------|----------|---------------------------------------------|
 | Side Effect Classification | Random Forest   | ~33%     | Simulated and imbalanced data               |
 | Target Protein Prediction  | Random Forest   | 100%     | Simulated data; risk of overfitting         |
 
-## 💡 AGI-Oriented Enhancements
+## AGI-Oriented Enhancements
 - Use multimodal input: molecular structure, clinical trial data, EHR  
 - Integrate biomedical LLMs (BioGPT, PubMedBERT)  
 - Build drug-target-pathway knowledge graphs  
 - Use continual learning for dynamic safety signal updates  
 
-## 📁 Dataset Overview
+## Dataset Overview
 
 | File Name              | Description                                |
 |------------------------|--------------------------------------------|
@@ -161,7 +161,7 @@ plt.show()
 | `drug_atc.tsv`         | ATC therapeutic classifications            |
 | `merged_drug_data.csv` | Final enriched dataset with side effects and targets |
 
-## 📚 References
+## References
 - Breiman, L. (2001). *Random Forests*. *Machine Learning*, 45(1), 5–32  
 - WHO. ATC/DDD Index 2023. https://www.whocc.no/atc_ddd_index/  
 - Wang, Z., Clark, N.R., Ma'ayan, A. (2016). *Bioinformatics*, 32(15), 2338–2345  
